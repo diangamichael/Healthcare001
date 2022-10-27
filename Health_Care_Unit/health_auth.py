@@ -13,7 +13,7 @@ def signup():
     if request.method == 'POST':
         name = request.form.get('first') +" "+ request.form.get('last')
         email = request.form.get('email')
-        is_valid = validate_email(email=email, check_format=False, check_blacklist=True, check_dns=True, check_smtp=False, smtp_debug=False)
+        is_valid = validate_email(email=email)
         pwd = request.form.get('userpass')
 
         patient = Patient.query.filter_by(email=email).first()

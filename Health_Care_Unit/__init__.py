@@ -26,7 +26,10 @@ def create_app():
 
     from .health_auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint)
+    from . import models
+
+    with app.app_context():
+        db.create_all()
 
     return app
-
-db.create_all(app=create_app())
+    

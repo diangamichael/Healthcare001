@@ -12,8 +12,8 @@ auth = Blueprint("health_auth", __name__)
 def signup():
     if request.method == 'POST':
         name = request.form.get('first') +" "+ request.form.get('last')
-        email = request.form.get('useremail')
-        is_valid = validate_email(email_address=email, check_format=True, check_blacklist=True, check_dns=True, check_smtp=False, smtp_debug=False)
+        email = request.form.get('email')
+        is_valid = validate_email(email=email, check_format=False, check_blacklist=True, check_dns=True, check_smtp=False, smtp_debug=False)
         pwd = request.form.get('userpass')
 
         patient = Patient.query.filter_by(email=email).first()
@@ -33,7 +33,7 @@ def signup():
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        email = request.form.get('useremail')
+        email = request.form.get('email')
         pwd = request.form.get('userpass')
         remember = True if request.form.get('remember') else False
 

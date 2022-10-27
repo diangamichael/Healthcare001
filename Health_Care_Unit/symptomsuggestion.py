@@ -71,9 +71,9 @@ def diseaseDetail(term):
     diseases=[term]
     ret=term+"\n"
     for dis in diseases:
-        # search "disease wilipedia" on google 
+        # search "disease wikipedia" on google 
         query = dis+' wikipedia'
-        for sr in search(query+".co.in"): 
+        for sr in search(query+".co.ke"): 
             # open wikipedia link
             match=re.search(r'wikipedia',sr)
             filled = 0
